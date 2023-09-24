@@ -1,0 +1,18 @@
+header {
+    display: flex;
+    justify-content: space-between;
+}
+#timer {
+
+}
+#hiScore {
+
+}
+.carouselbox {
+    display:block;
+    margin: auto;
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+    padding-bottom: 40px;
+}

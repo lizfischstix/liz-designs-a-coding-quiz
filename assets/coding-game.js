@@ -1,23 +1,18 @@
 //TODO: Timer
 function setTime() {
-    // Sets interval in variable
     var timerInterval = setInterval(function() {
       secondsLeft--;
       timeEl.textContent = secondsLeft + " seconds";
   
-      if(secondsLeft === 0) {
-        // Stops execution of action at set interval
+      if((secondsLeft === 0) ||  {
         clearInterval(timerInterval);
-        // Calls function to create and append image
         sendMessage();
       }
-  
-    }, 1000);
+    }, 6000);
   }
-}
-//TODO: Start button on index
 //TODO: picture carusel with answer buttons/-10sec for false selection
-
+var gameCards = [
+     ]
 //FOR hiscore.html
 var player = document.getElementById("player-names");
 var score = document.getElementById("score");
