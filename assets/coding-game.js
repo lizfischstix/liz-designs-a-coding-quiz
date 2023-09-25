@@ -1,4 +1,5 @@
 //TODO: Timer
+
 function setTime() {
     var timerInterval = setInterval(function() {
       secondsLeft--;
@@ -11,8 +12,7 @@ function setTime() {
     }, 6000);
   }
 //TODO: picture carusel with answer buttons/-10sec for false selection
-var gameCards = [
-     ]
+var carousel = document.querySelector(.carouselbox);
 //FOR hiscore.html
 var player = document.getElementById("player-names");
 var score = document.getElementById("score");
