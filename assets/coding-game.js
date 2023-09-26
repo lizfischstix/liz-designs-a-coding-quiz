@@ -33,17 +33,6 @@ var questions = [
 
 var time = questions.length * 20;
 
-// function setTime() {
-//     var timerInterval = setInterval(function() {
-//       secondsLeft--;
-//       timeEl.textContent = secondsLeft + " seconds";
-
-//       if((secondsLeft === 0) ||  {
-//         clearInterval(timerInterval);
-//         sendMessage();
-//       }
-//     }, 6000);
-//   }
 function startQuiz() {
   var startScreenEl = document.getElementById("start-screen");
   startScreenEl.setAttribute("class", "hide");
@@ -53,7 +42,7 @@ function startQuiz() {
     timerEl.textContent = time;
   }, 1000)
   showQuestion()
-  if (time <= 0) { //|| all questions answered
+  if (time <= 0) //||(questionsIndex<questions.length-1))
     //quiz to stop
     clearInterval(timerId)
     var endScreenEl = document.getElementById("end-screen")
@@ -61,15 +50,13 @@ function startQuiz() {
     //show score
     var finalScoreEl = document.getElementById('final-score')
   }
-}
 
 function showQuestion() {
-  console.log(questions)
   var currentQuestion = questions[questionsIndex]
   questionsTitleEl.textContent = currentQuestion.title
 
   var choices = currentQuestion.choices
-  
+  choicesEl.innerHTML=""
   for (let index = 0; index < choices.length; index++) {
     
     var choice = choices[index];
@@ -78,18 +65,21 @@ function showQuestion() {
     buttonEl.textContent = choice
     choicesEl.appendChild(buttonEl)
   }
-  buttonEl.addEventListener("click", showQuestion());
 }
+choicesEl.addEventListener("click", function(e){
+  console.log(e.target.value);
+  if (e.target.value !== questions[questionsIndex].answer){
+    time=time-10
+  }
+  if(questionsIndex<questions.length-1){
+    questionsIndex++
+    showQuestion()  
+  } else{
+    clearInterval(timerId)
+    console.log(time);
+  }
   
-
-// choice.addEventListener("click", function()) {
-//  questionsIndex++;
-//  if (questionsIndex < questions.length) {
-//   showQuestion();
-//  }   
-//}
-
-
+})  
 
 //FOR hiscore.html
 var player = document.getElementById("player-names");
