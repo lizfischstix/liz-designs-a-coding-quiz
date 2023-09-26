@@ -1,7 +1,8 @@
+
 //TODO: Timer
 // variables to track state of our quiz
-var currentQuestion = 0;
-var time = questions.length * 20;
+
+
 //variables to reference DOM elements
 var timerEl = document.getElementById('time');
 var questionsEl = document.getElementById('questions');
@@ -9,13 +10,34 @@ var choicesEl = document.getElementById('choices');
 var submitBtn = document.getElementById('submit');
 var startBtn = document.getElementById('start')
 var initialsEl = document.getElementById("initials");
+var questionsTitleEl = document.getElementById("questions-title")
 var timerId;
+var questionsIndex = 0
+var questions = [
+  {
+    title: "Inside which HTML element is the  .JS file attached?",
+    choices: ["<script>", "<js>", "<java-script>", "<java>"],
+    answer: "<script>"
+  },
+  {
+    title: "Where in the HTML file should external JavaScript be linked?",
+    choices: ["top of <head> element", "bottom of <head> element", "top of <body> element", "bottom of <body> element"],
+    answer: "bottom of <body> element"
+  },
+  {
+    title: "What function would render a box with the message 'Hello World'",
+    choices: ["msg('Hello World')", "alert('Hello World')", "function{'Hello World'}", "alert-box('Hello World')"],
+    answer: "alert('Hello World')"
+  }
+]
+
+var time = questions.length * 20;
 
 // function setTime() {
 //     var timerInterval = setInterval(function() {
 //       secondsLeft--;
 //       timeEl.textContent = secondsLeft + " seconds";
-  
+
 //       if((secondsLeft === 0) ||  {
 //         clearInterval(timerInterval);
 //         sendMessage();
@@ -23,24 +45,44 @@ var timerId;
 //     }, 6000);
 //   }
 function startQuiz() {
-    var startScreenEl = document.getElementById("start-screen");
-    startScreenEl.setAttribute("class", "hide");
-    questionsEl.removeAttribute("class")
-    timerId = setInterval(function(){
-      time--;
-      timerEl.textContent = time;
-    }, 1000)
-
-    if(time <= 0){ //|| all questions answered
-      //quiz to stop
-      clearInterval(timerId)
-      var endScreenEl = document.getElementById("end-screen")
-      endScreenEl.removeAttribute('class');
-      //show score
-      var finalScoreEl = document.getElementById('final-score')
-    }
+  var startScreenEl = document.getElementById("start-screen");
+  startScreenEl.setAttribute("class", "hide");
+  questionsEl.removeAttribute("class")
+  timerId = setInterval(function () {
+    time--;
+    timerEl.textContent = time;
+  }, 1000)
+  showQuestion()
+  if (time <= 0) { //|| all questions answered
+    //quiz to stop
+    clearInterval(timerId)
+    var endScreenEl = document.getElementById("end-screen")
+    endScreenEl.removeAttribute('class');
+    //show score
+    var finalScoreEl = document.getElementById('final-score')
+  }
 }
 
+function showQuestion() {
+  console.log(questions)
+  var currentQuestion = questions[questionsIndex]
+  questionsTitleEl.textContent = currentQuestion.title
+
+  var choices = currentQuestion.choices
+  
+  for (let index = 0; index < choices.length; index++) {
+  
+    if (choice === currentQuestion.answer){
+      (index++)}
+    
+    var choice = choices[index];
+    var buttonEl = document.createElement("button")
+    buttonEl.value = choice
+    buttonEl.textContent = choice
+    choicesEl.appendChild(buttonEl)
+  }
+ addEventListener
+}
 //FOR hiscore.html
 var player = document.getElementById("player-names");
 var score = document.getElementById("score");
@@ -52,7 +94,6 @@ var score = document.getElementById("score");
 // }
 //     localStorage.setItem('hiScore', JSON.stringify(hiScore));
 // }
-// //TODO:attach js to html
 // function renderHiScore() {
 //     var lastScore = JSON.parse(localStorage.getItem('hiScore'));
 //     // Check if data is returned, if not exit out of the function
@@ -61,7 +102,6 @@ var score = document.getElementById("score");
 //       document.getElementById('saved-score').innerHTML = lastScore.score;
 //     }
 //   }
-
 //   saveButton.addEventListener('click', function (event) {
 //     event.preventDefault();
 //     SaveHiScore();
@@ -73,4 +113,4 @@ var score = document.getElementById("score");
 //   }
 //   init();
 
-  startBtn.onclick = startQuiz;
+startBtn.onclick = startQuiz;

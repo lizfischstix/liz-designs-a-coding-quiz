@@ -10,8 +10,8 @@ var questions = [
         answer: "bottom of <body> element"
     },
     {
-        title: "What function would render a box with the message "Hello World"",
-        choices: ["msg("Hello World")", "alert("Hello World")", "function{"Hello World"}", "alert-box("Hello World")"],
-        answer: "alert("Hello World")"
+        title: "What function would render a box with the message 'Hello World'",
+        choices: ["msg('Hello World')", "alert('Hello World')", "function{'Hello World'}", "alert-box('Hello World')"],
+        answer: "alert('Hello World')"
     }
 ]
