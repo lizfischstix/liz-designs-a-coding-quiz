@@ -71,9 +71,6 @@ function showQuestion() {
   var choices = currentQuestion.choices
   
   for (let index = 0; index < choices.length; index++) {
-  
-    if (choice === currentQuestion.answer){
-      (index++)}
     
     var choice = choices[index];
     var buttonEl = document.createElement("button")
@@ -81,8 +78,19 @@ function showQuestion() {
     buttonEl.textContent = choice
     choicesEl.appendChild(buttonEl)
   }
- addEventListener
+  buttonEl.addEventListener("click", showQuestion());
 }
+  
+
+// choice.addEventListener("click", function()) {
+//  questionsIndex++;
+//  if (questionsIndex < questions.length) {
+//   showQuestion();
+//  }   
+//}
+
+
+
 //FOR hiscore.html
 var player = document.getElementById("player-names");
 var score = document.getElementById("score");
