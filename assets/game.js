@@ -68,7 +68,6 @@ choicesEl.addEventListener("click", function(e) {
       showQuestion()  
     } 
     else{
-
         clearInterval(timerId);
 
         localStorage.setItem("lastScore" , time);
@@ -76,5 +75,7 @@ choicesEl.addEventListener("click", function(e) {
         //console.log(time);
     }
     });
+
+    
 
 startBtn.onclick = startQuiz;
